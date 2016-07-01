@@ -33,6 +33,14 @@ column 3, all other lines have to be indented 2 spaces (or lazy syntax may
   <div style="color: #fff; background-color: #000; height: 100px; width: 100px;">Escape 3</div>
 </div>
 
+<div class="fig figcenter fighighlight">
+<a href="http://vision.stanford.edu/teaching/cs231n/linear-classify-demo" style="text-decoration:none;">
+  <img src="http://cs231n.github.io/assets/classifydemo.jpeg">
+  <div class="figcaption">We have written an interactive web demo to help your intuitions with linear classifiers. The demo visualizes the loss functions discussed in this section using a toy 3-way classification on 2D data. The demo also jumps ahead a bit and performs the optimization, which we will discuss in full detail in the next section.
+  </div>
+</a>
+</div>
+
 ```cpp
 #include <cstdio>
 #include <algorithm>
@@ -114,3 +122,26 @@ Do you see {::comment}this text{:/comment}?
   <span class="k">return</span> [<span class="en">rand</span>() <span class="k">^</span> <span class="en">ic</span>(c) <span class="k">&amp;</span> <span class="c1">2147483647</span>, <span class="c1">Math</span>.<span class="c1">round</span>((<span class="k">new</span> <span class="en">Date</span>).<span class="c1">getTime</span>() <span class="k">/</span> <span class="c1">1e3</span>)].<span class="c1">join</span>(<span class="s"><span class="pds">"</span>.<span class="pds">"</span></span>);
 }</pre>
 {:/nomarkdown}
+
+
+<div><pre><span class="c">// Slightly modified for readability</span>
+<span class="k">function</span> <span class="en">rand</span>() {
+  <span class="k">return</span> <span class="c1">Math</span>.<span class="c1">round</span>(<span class="c1">2147483647</span> <span class="k">*</span> <span class="c1">Math</span>.<span class="c1">random</span>());
+}
+
+<span class="k">function</span> <span class="en">ic</span>(<span class="smi">a</span>) {
+  <span class="k">var</span> b <span class="k">=</span> <span class="c1">0</span>, c;
+  <span class="k">for</span> (<span class="k">var</span> i <span class="k">=</span> <span class="smi">a</span>.<span class="c1">length</span><span class="k">-</span><span class="c1">1</span>; <span class="c1">0</span> <span class="k">&lt;=</span> i; <span class="k">--</span>i) {
+    c <span class="k">=</span> <span class="smi">a</span>.<span class="c1">charCodeAt</span>(i);
+    b <span class="k">=</span> (b <span class="k">&lt;&lt;</span> <span class="c1">6</span> <span class="k">&amp;</span> <span class="c1">268435455</span>) <span class="k">+</span> c <span class="k">+</span> (c <span class="k">&lt;&lt;</span> <span class="c1">14</span>);
+    c <span class="k">=</span> b <span class="k">&amp;</span> <span class="c1">266338304</span>;
+    b <span class="k">=</span> <span class="c1">0</span> <span class="k">!=</span> c <span class="k">?</span> b <span class="k">^</span> c <span class="k">&gt;&gt;</span> <span class="c1">21</span> <span class="k">:</span> b;
+  }
+  <span class="k">return</span> b;
+}
+
+<span class="k">function</span> <span class="en">gCid</span>() {
+  <span class="k">var</span> c <span class="k">=</span> <span class="c1">navigator</span>.<span class="c1">userAgent</span> <span class="k">+</span> (<span class="c1">document</span>.<span class="c1">cookie</span> <span class="k">?</span> <span class="c1">document</span>.<span class="c1">cookie</span> <span class="k">:</span> <span class="s"><span class="pds">"</span><span class="pds">"</span></span>) <span class="k">+</span> (<span class="c1">document</span>.<span class="c1">referrer</span> <span class="k">?</span> <span class="c1">document</span>.<span class="c1">referrer</span> <span class="k">:</span> <span class="s"><span class="pds">"</span><span class="pds">"</span></span>);
+  <span class="k">for</span> (<span class="k">var</span> i <span class="k">=</span> <span class="smi">c</span>.<span class="c1">length</span>, j <span class="k">=</span> <span class="smi">history</span>.<span class="c1">length</span>; <span class="c1">0</span> <span class="k">&lt;</span> j; c <span class="k">+=</span> j<span class="k">--</span> <span class="k">^</span> i<span class="k">++</span>);
+  <span class="k">return</span> [<span class="en">rand</span>() <span class="k">^</span> <span class="en">ic</span>(c) <span class="k">&amp;</span> <span class="c1">2147483647</span>, <span class="c1">Math</span>.<span class="c1">round</span>((<span class="k">new</span> <span class="en">Date</span>).<span class="c1">getTime</span>() <span class="k">/</span> <span class="c1">1e3</span>)].<span class="c1">join</span>(<span class="s"><span class="pds">"</span>.<span class="pds">"</span></span>);
+}</pre></div>
