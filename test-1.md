@@ -4,7 +4,11 @@ highlighter: rouge
 ---
 # Header 1 {#anchor-1}
 
-{{ site.time }} {{ site.highlighter }} {{ site.url }}
+- {{ site.time }}
+- {{ site.highlighter }}
+- {{ site.url }}
+- {{ site.permalink }}
+- {{ site.paginate_path }}
 
 kramdown
 : A Markdown-superset converter
